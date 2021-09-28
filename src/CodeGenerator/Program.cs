@@ -77,6 +77,9 @@ namespace CodeGenerator
 
             Console.WriteLine($"Outputting generated code files to {outputPath}.");
 
+            if (!Directory.Exists(outputPath))
+                Directory.CreateDirectory(outputPath);
+
             foreach (EnumDefinition ed in defs.Enums)
             {
                 using (CSharpCodeWriter writer = new CSharpCodeWriter(Path.Combine(outputPath, ed.FriendlyName + ".gen.cs")))

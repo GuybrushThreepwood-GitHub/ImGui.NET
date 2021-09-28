@@ -42,7 +42,6 @@
   <ItemGroup>
     <EmbeddedResource Include="costura64\cimgui.dll" />
     <EmbeddedResource Include="costura64\cimguizmo.dll" />
-    <EmbeddedResource Include="costura64\cimnodes.dll" />
     <EmbeddedResource Include="costura64\cimplot.dll" />
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>

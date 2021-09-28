@@ -12,6 +12,7 @@ namespace ImGuiNET
         public int TexDesiredWidth;
         public int TexGlyphPadding;
         public byte Locked;
+        public byte TexReady;
         public byte TexPixelsUseColors;
         public byte* TexPixelsAlpha8;
         public uint* TexPixelsRGBA32;
@@ -104,6 +105,7 @@ namespace ImGuiNET
         public ref int TexDesiredWidth => ref Unsafe.AsRef<int>(&NativePtr->TexDesiredWidth);
         public ref int TexGlyphPadding => ref Unsafe.AsRef<int>(&NativePtr->TexGlyphPadding);
         public ref bool Locked => ref Unsafe.AsRef<bool>(&NativePtr->Locked);
+        public ref bool TexReady => ref Unsafe.AsRef<bool>(&NativePtr->TexReady);
         public ref bool TexPixelsUseColors => ref Unsafe.AsRef<bool>(&NativePtr->TexPixelsUseColors);
         public IntPtr TexPixelsAlpha8 { get => (IntPtr)NativePtr->TexPixelsAlpha8; set => NativePtr->TexPixelsAlpha8 = (byte*)value; }
         public IntPtr TexPixelsRGBA32 { get => (IntPtr)NativePtr->TexPixelsRGBA32; set => NativePtr->TexPixelsRGBA32 = (uint*)value; }
@@ -523,36 +525,6 @@ namespace ImGuiNET
                 }
             }
         }
-        public void GetTexDataAsAlpha8(out IntPtr out_pixels, out int out_width, out int out_height)
-        {
-            int* out_bytes_per_pixel = null;
-            fixed (IntPtr* native_out_pixels = &out_pixels)
-            {
-                fixed (int* native_out_width = &out_width)
-                {
-                    fixed (int* native_out_height = &out_height)
-                    {
-                        ImGuiNative.ImFontAtlas_GetTexDataAsAlpha8((ImFontAtlas*)(NativePtr), native_out_pixels, native_out_width, native_out_height, out_bytes_per_pixel);
-                    }
-                }
-            }
-        }
-        public void GetTexDataAsAlpha8(out IntPtr out_pixels, out int out_width, out int out_height, out int out_bytes_per_pixel)
-        {
-            fixed (IntPtr* native_out_pixels = &out_pixels)
-            {
-                fixed (int* native_out_width = &out_width)
-                {
-                    fixed (int* native_out_height = &out_height)
-                    {
-                        fixed (int* native_out_bytes_per_pixel = &out_bytes_per_pixel)
-                        {
-                            ImGuiNative.ImFontAtlas_GetTexDataAsAlpha8((ImFontAtlas*)(NativePtr), native_out_pixels, native_out_width, native_out_height, native_out_bytes_per_pixel);
-                        }
-                    }
-                }
-            }
-        }
         public void GetTexDataAsRGBA32(out byte* out_pixels, out int out_width, out int out_height)
         {
             int* out_bytes_per_pixel = null;
@@ -570,36 +542,6 @@ namespace ImGuiNET
         public void GetTexDataAsRGBA32(out byte* out_pixels, out int out_width, out int out_height, out int out_bytes_per_pixel)
         {
             fixed (byte** native_out_pixels = &out_pixels)
-            {
-                fixed (int* native_out_width = &out_width)
-                {
-                    fixed (int* native_out_height = &out_height)
-                    {
-                        fixed (int* native_out_bytes_per_pixel = &out_bytes_per_pixel)
-                        {
-                            ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32((ImFontAtlas*)(NativePtr), native_out_pixels, native_out_width, native_out_height, native_out_bytes_per_pixel);
-                        }
-                    }
-                }
-            }
-        }
-        public void GetTexDataAsRGBA32(out IntPtr out_pixels, out int out_width, out int out_height)
-        {
-            int* out_bytes_per_pixel = null;
-            fixed (IntPtr* native_out_pixels = &out_pixels)
-            {
-                fixed (int* native_out_width = &out_width)
-                {
-                    fixed (int* native_out_height = &out_height)
-                    {
-                        ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32((ImFontAtlas*)(NativePtr), native_out_pixels, native_out_width, native_out_height, out_bytes_per_pixel);
-                    }
-                }
-            }
-        }
-        public void GetTexDataAsRGBA32(out IntPtr out_pixels, out int out_width, out int out_height, out int out_bytes_per_pixel)
-        {
-            fixed (IntPtr* native_out_pixels = &out_pixels)
             {
                 fixed (int* native_out_width = &out_width)
                 {

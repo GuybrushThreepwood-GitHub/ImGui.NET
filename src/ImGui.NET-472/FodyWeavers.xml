@@ -5,7 +5,6 @@
       cimgui
       cimplot
       cimguizmo
-      cimnodes
     </Unmanaged64Assemblies>
   </Costura>
 </Weavers>

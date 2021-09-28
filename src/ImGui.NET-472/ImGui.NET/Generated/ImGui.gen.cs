@@ -616,6 +616,16 @@ namespace ImGuiNET
             }
             return ret != 0;
         }
+        public static void BeginDisabled()
+        {
+            byte disabled = 1;
+            ImGuiNative.igBeginDisabled(disabled);
+        }
+        public static void BeginDisabled(bool disabled)
+        {
+            byte native_disabled = disabled ? (byte)1 : (byte)0;
+            ImGuiNative.igBeginDisabled(native_disabled);
+        }
         public static bool BeginDragDropSource()
         {
             ImGuiDragDropFlags flags = (ImGuiDragDropFlags)0;
@@ -8036,6 +8046,10 @@ namespace ImGuiNET
         public static void EndCombo()
         {
             ImGuiNative.igEndCombo();
+        }
+        public static void EndDisabled()
+        {
+            ImGuiNative.igEndDisabled();
         }
         public static void EndDragDropSource()
         {

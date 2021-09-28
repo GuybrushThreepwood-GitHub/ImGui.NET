@@ -66,12 +66,18 @@ namespace ImGuizmoNET
         }
         public static bool IsOver()
         {
-            byte ret = ImGuizmoNative.ImGuizmo_IsOverNil();
+            byte ret = ImGuizmoNative.ImGuizmo_IsOver_Nil();
             return ret != 0;
         }
         public static bool IsOver(OPERATION op)
         {
-            byte ret = ImGuizmoNative.ImGuizmo_IsOverOPERATION(op);
+            byte ret = ImGuizmoNative.ImGuizmo_IsOver_OPERATION(op);
+            return ret != 0;
+        }
+        [Obsolete("Use method with non-primitive (enum) arguments instead.")]
+        public static bool IsOver(int op)
+        {
+            byte ret = ImGuizmoNative.ImGuizmo_IsOver_OPERATION((OPERATION)op);
             return ret != 0;
         }
         public static bool IsUsing()
@@ -97,6 +103,44 @@ namespace ImGuizmoNET
                 }
             }
         }
+        [Obsolete("Use method with non-primitive (enum) arguments instead.")]
+        public static bool Manipulate(ref float view, ref float projection, int operation, MODE mode, ref float matrix)
+        {
+            float* deltaMatrix = null;
+            float* snap = null;
+            float* localBounds = null;
+            float* boundsSnap = null;
+            fixed (float* native_view = &view)
+            {
+                fixed (float* native_projection = &projection)
+                {
+                    fixed (float* native_matrix = &matrix)
+                    {
+                        byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, (OPERATION)operation, mode, native_matrix, deltaMatrix, snap, localBounds, boundsSnap);
+                        return ret != 0;
+                    }
+                }
+            }
+        }
+        [Obsolete("Use method with non-primitive (enum) arguments instead.")]
+        public static bool Manipulate(ref float view, ref float projection, OPERATION operation, int mode, ref float matrix)
+        {
+            float* deltaMatrix = null;
+            float* snap = null;
+            float* localBounds = null;
+            float* boundsSnap = null;
+            fixed (float* native_view = &view)
+            {
+                fixed (float* native_projection = &projection)
+                {
+                    fixed (float* native_matrix = &matrix)
+                    {
+                        byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, operation, (MODE)mode, native_matrix, deltaMatrix, snap, localBounds, boundsSnap);
+                        return ret != 0;
+                    }
+                }
+            }
+        }
         public static bool Manipulate(ref float view, ref float projection, OPERATION operation, MODE mode, ref float matrix, ref float deltaMatrix)
         {
             float* snap = null;
@@ -111,6 +155,48 @@ namespace ImGuizmoNET
                         fixed (float* native_deltaMatrix = &deltaMatrix)
                         {
                             byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, operation, mode, native_matrix, native_deltaMatrix, snap, localBounds, boundsSnap);
+                            return ret != 0;
+                        }
+                    }
+                }
+            }
+        }
+        [Obsolete("Use method with non-primitive (enum) arguments instead.")]
+        public static bool Manipulate(ref float view, ref float projection, int operation, MODE mode, ref float matrix, ref float deltaMatrix)
+        {
+            float* snap = null;
+            float* localBounds = null;
+            float* boundsSnap = null;
+            fixed (float* native_view = &view)
+            {
+                fixed (float* native_projection = &projection)
+                {
+                    fixed (float* native_matrix = &matrix)
+                    {
+                        fixed (float* native_deltaMatrix = &deltaMatrix)
+                        {
+                            byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, (OPERATION)operation, mode, native_matrix, native_deltaMatrix, snap, localBounds, boundsSnap);
+                            return ret != 0;
+                        }
+                    }
+                }
+            }
+        }
+        [Obsolete("Use method with non-primitive (enum) arguments instead.")]
+        public static bool Manipulate(ref float view, ref float projection, OPERATION operation, int mode, ref float matrix, ref float deltaMatrix)
+        {
+            float* snap = null;
+            float* localBounds = null;
+            float* boundsSnap = null;
+            fixed (float* native_view = &view)
+            {
+                fixed (float* native_projection = &projection)
+                {
+                    fixed (float* native_matrix = &matrix)
+                    {
+                        fixed (float* native_deltaMatrix = &deltaMatrix)
+                        {
+                            byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, operation, (MODE)mode, native_matrix, native_deltaMatrix, snap, localBounds, boundsSnap);
                             return ret != 0;
                         }
                     }
@@ -132,6 +218,52 @@ namespace ImGuizmoNET
                             fixed (float* native_snap = &snap)
                             {
                                 byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, operation, mode, native_matrix, native_deltaMatrix, native_snap, localBounds, boundsSnap);
+                                return ret != 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        [Obsolete("Use method with non-primitive (enum) arguments instead.")]
+        public static bool Manipulate(ref float view, ref float projection, int operation, MODE mode, ref float matrix, ref float deltaMatrix, ref float snap)
+        {
+            float* localBounds = null;
+            float* boundsSnap = null;
+            fixed (float* native_view = &view)
+            {
+                fixed (float* native_projection = &projection)
+                {
+                    fixed (float* native_matrix = &matrix)
+                    {
+                        fixed (float* native_deltaMatrix = &deltaMatrix)
+                        {
+                            fixed (float* native_snap = &snap)
+                            {
+                                byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, (OPERATION)operation, mode, native_matrix, native_deltaMatrix, native_snap, localBounds, boundsSnap);
+                                return ret != 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        [Obsolete("Use method with non-primitive (enum) arguments instead.")]
+        public static bool Manipulate(ref float view, ref float projection, OPERATION operation, int mode, ref float matrix, ref float deltaMatrix, ref float snap)
+        {
+            float* localBounds = null;
+            float* boundsSnap = null;
+            fixed (float* native_view = &view)
+            {
+                fixed (float* native_projection = &projection)
+                {
+                    fixed (float* native_matrix = &matrix)
+                    {
+                        fixed (float* native_deltaMatrix = &deltaMatrix)
+                        {
+                            fixed (float* native_snap = &snap)
+                            {
+                                byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, operation, (MODE)mode, native_matrix, native_deltaMatrix, native_snap, localBounds, boundsSnap);
                                 return ret != 0;
                             }
                         }
@@ -163,6 +295,56 @@ namespace ImGuizmoNET
                 }
             }
         }
+        [Obsolete("Use method with non-primitive (enum) arguments instead.")]
+        public static bool Manipulate(ref float view, ref float projection, int operation, MODE mode, ref float matrix, ref float deltaMatrix, ref float snap, ref float localBounds)
+        {
+            float* boundsSnap = null;
+            fixed (float* native_view = &view)
+            {
+                fixed (float* native_projection = &projection)
+                {
+                    fixed (float* native_matrix = &matrix)
+                    {
+                        fixed (float* native_deltaMatrix = &deltaMatrix)
+                        {
+                            fixed (float* native_snap = &snap)
+                            {
+                                fixed (float* native_localBounds = &localBounds)
+                                {
+                                    byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, (OPERATION)operation, mode, native_matrix, native_deltaMatrix, native_snap, native_localBounds, boundsSnap);
+                                    return ret != 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        [Obsolete("Use method with non-primitive (enum) arguments instead.")]
+        public static bool Manipulate(ref float view, ref float projection, OPERATION operation, int mode, ref float matrix, ref float deltaMatrix, ref float snap, ref float localBounds)
+        {
+            float* boundsSnap = null;
+            fixed (float* native_view = &view)
+            {
+                fixed (float* native_projection = &projection)
+                {
+                    fixed (float* native_matrix = &matrix)
+                    {
+                        fixed (float* native_deltaMatrix = &deltaMatrix)
+                        {
+                            fixed (float* native_snap = &snap)
+                            {
+                                fixed (float* native_localBounds = &localBounds)
+                                {
+                                    byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, operation, (MODE)mode, native_matrix, native_deltaMatrix, native_snap, native_localBounds, boundsSnap);
+                                    return ret != 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         public static bool Manipulate(ref float view, ref float projection, OPERATION operation, MODE mode, ref float matrix, ref float deltaMatrix, ref float snap, ref float localBounds, ref float boundsSnap)
         {
             fixed (float* native_view = &view)
@@ -180,6 +362,60 @@ namespace ImGuizmoNET
                                     fixed (float* native_boundsSnap = &boundsSnap)
                                     {
                                         byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, operation, mode, native_matrix, native_deltaMatrix, native_snap, native_localBounds, native_boundsSnap);
+                                        return ret != 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        [Obsolete("Use method with non-primitive (enum) arguments instead.")]
+        public static bool Manipulate(ref float view, ref float projection, int operation, MODE mode, ref float matrix, ref float deltaMatrix, ref float snap, ref float localBounds, ref float boundsSnap)
+        {
+            fixed (float* native_view = &view)
+            {
+                fixed (float* native_projection = &projection)
+                {
+                    fixed (float* native_matrix = &matrix)
+                    {
+                        fixed (float* native_deltaMatrix = &deltaMatrix)
+                        {
+                            fixed (float* native_snap = &snap)
+                            {
+                                fixed (float* native_localBounds = &localBounds)
+                                {
+                                    fixed (float* native_boundsSnap = &boundsSnap)
+                                    {
+                                        byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, (OPERATION)operation, mode, native_matrix, native_deltaMatrix, native_snap, native_localBounds, native_boundsSnap);
+                                        return ret != 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        [Obsolete("Use method with non-primitive (enum) arguments instead.")]
+        public static bool Manipulate(ref float view, ref float projection, OPERATION operation, int mode, ref float matrix, ref float deltaMatrix, ref float snap, ref float localBounds, ref float boundsSnap)
+        {
+            fixed (float* native_view = &view)
+            {
+                fixed (float* native_projection = &projection)
+                {
+                    fixed (float* native_matrix = &matrix)
+                    {
+                        fixed (float* native_deltaMatrix = &deltaMatrix)
+                        {
+                            fixed (float* native_snap = &snap)
+                            {
+                                fixed (float* native_localBounds = &localBounds)
+                                {
+                                    fixed (float* native_boundsSnap = &boundsSnap)
+                                    {
+                                        byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, operation, (MODE)mode, native_matrix, native_deltaMatrix, native_snap, native_localBounds, native_boundsSnap);
                                         return ret != 0;
                                     }
                                 }
