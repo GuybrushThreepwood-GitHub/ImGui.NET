@@ -16,6 +16,10 @@ namespace CodeGenerator
         static void Main(string[] args)
         {
             string outputPath;
+
+            // Unity Vectors are not compatible with System.Numeric Vectors
+            // this toggles between defining 'using UnityEngine' or 'using System.Numerics'
+            bool useNumerics = false;
             if (args.Length > 0)
             {
                 outputPath = args[0];
@@ -108,7 +112,14 @@ namespace CodeGenerator
                 using (CSharpCodeWriter writer = new CSharpCodeWriter(Path.Combine(outputPath, td.Name + ".gen.cs")))
                 {
                     writer.Using("System");
-                    writer.Using("System.Numerics");
+                    if (useNumerics)
+                    {
+                        writer.Using("System.Numerics");
+                    }
+                    else
+                    {
+                        writer.Using("UnityEngine");
+                    }
                     writer.Using("System.Runtime.CompilerServices");
                     writer.Using("System.Text");
                     if (referencesImGui)
@@ -293,7 +304,14 @@ namespace CodeGenerator
             using (CSharpCodeWriter writer = new CSharpCodeWriter(Path.Combine(outputPath, $"{classPrefix}Native.gen.cs")))
             {
                 writer.Using("System");
-                writer.Using("System.Numerics");
+                if (useNumerics)
+                {
+                    writer.Using("System.Numerics");
+                }
+                else
+                {
+                    writer.Using("UnityEngine");
+                }
                 writer.Using("System.Runtime.InteropServices");
                 if (referencesImGui)
                 {
@@ -365,7 +383,14 @@ namespace CodeGenerator
             using (CSharpCodeWriter writer = new CSharpCodeWriter(Path.Combine(outputPath, $"{classPrefix}.gen.cs")))
             {
                 writer.Using("System");
-                writer.Using("System.Numerics");
+                if (useNumerics)
+                {
+                    writer.Using("System.Numerics");
+                }
+                else
+                {
+                    writer.Using("UnityEngine");
+                }
                 writer.Using("System.Runtime.InteropServices");
                 writer.Using("System.Text");
                 if (referencesImGui)

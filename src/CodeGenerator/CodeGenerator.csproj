@@ -26,4 +26,8 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="echo PRE-BUILD COPY&#xD;&#xA;&#xD;&#xA;xcopy $(ProjectDir)..\cimgui\generator\output\*.json $(TargetDir)definitions\cimgui\ /Y" />
+  </Target>
 </Project>

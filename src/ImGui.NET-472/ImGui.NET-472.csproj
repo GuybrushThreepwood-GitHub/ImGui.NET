@@ -14,7 +14,6 @@
     <RootNamespace>ImGui.NET</RootNamespace>
     <AssemblyName>ImGui.NET</AssemblyName>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Platforms>x64</Platforms>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
